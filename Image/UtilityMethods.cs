@@ -28,6 +28,13 @@ namespace StorybrewScripts
                 }
 
                 public static Vector2 GetScaleRatio(string filename) => GetScaleRatio(filename, new Vector2(854, 480)); // TODO: Put these in some constants library
+
+
+                public static float GetScaleRatio(string filename, float cap, bool useHeight = true)
+                {
+                    var bitmap = StoryboardObjectGenerator.Current.GetMapsetBitmap(filename);
+                    return cap / (useHeight ? bitmap.Height : bitmap.Width);
+                }
             }
         }
     }
