@@ -35,6 +35,14 @@ namespace StorybrewScripts
                     var bitmap = StoryboardObjectGenerator.Current.GetMapsetBitmap(filename);
                     return cap / (useHeight ? bitmap.Height : bitmap.Width);
                 }
+
+                /// <summary>
+                /// TODO: Given the TopLeft coordinate and the OsbOrigin, find the proper Vector2 for a sprite.
+                /// </summary>
+                public static Vector2 FindPointToOrigin(Vector2 old, OsbOrigin origin)
+                {
+                    return old;
+                }
             }
         }
     }
