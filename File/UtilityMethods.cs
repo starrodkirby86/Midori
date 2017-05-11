@@ -36,6 +36,23 @@ namespace StorybrewScripts
                     directory.Delete(true);
                     CreateDirectory(path, useMapset);
                 }
+
+                /// <summary>
+                /// Finds all the files given in the filepath that contains some arbitrary suffix. The filepath should be the filename with extensione excluding the suffix pattern.
+                /// </summary>
+                public static List<String> GetFrames(string filepath)
+                {
+                    List<String> filepaths = new List<String>();
+                    var directory = Path.GetDirectoryName(filepath);
+                    var filename = Path.GetFileNameWithoutExtension(filepath);
+                    var extension = Path.GetExtension(filepath);
+                    var files = System.IO.Directory.GetFiles(FullPath(directory), $"{filename}*{extension}");
+
+                    foreach (var f in files)
+                        filepaths.Add(Path.Combine(directory, Path.GetFileName(f)));
+
+                    return filepaths;
+                }
             }
         }
     }
